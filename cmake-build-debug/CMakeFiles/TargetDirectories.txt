@@ -1,0 +1,3 @@
+D:/Git Projects/Beginner/GWACalc/cmake-build-debug/CMakeFiles/GWACalc.dir
+D:/Git Projects/Beginner/GWACalc/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Git Projects/Beginner/GWACalc/cmake-build-debug/CMakeFiles/rebuild_cache.dir

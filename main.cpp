@@ -5,8 +5,8 @@
 #include <iostream>
 using namespace std;
 
-void initTable (string subs[], float grades[], float units[], int size);
-void initSetters (string subs[], float grades[], float units[], int size);
+    void initTable (string subs[], float grades[], float units[], int size);
+    void initSetters (string subs[], float grades[], float units[], int size);
 //    void displayInfo();
     static void gradeToRemarks(float grade);
     void setGradeToUnits(float grade[], float gToUnits[], int size);
@@ -53,7 +53,7 @@ int main() {
 
     int activities[totalNumberOfSubs]; // An array of amount of activities for each subject
     int maxScores[totalNumberOfSubs]; // Maximum score for each activity
-    int totalActs[totalNumberOfSubs]; // Total score of activities for each subject
+    int actTotals[totalNumberOfSubs]; // Total score of activities for each subject
 
 
     // Initialize the activities, exams, and grading system for each subjects
@@ -69,21 +69,29 @@ int main() {
     }
 
     // Function that sums the total amount of Activities for each subject
-    int score[totalNumberOfSubs];
+    int score = 0;
     for (int i = 0; i < totalNumberOfSubs; i++) {
         int amountOfActivities = activities[i];
-        score[i] = 0;
             for (int j = 0; j < amountOfActivities; j++) {
-                totalActs[i] = 0;
+                actTotals[i] = 0;
                 cout << "Enter your score in your activities for " << subjects[i] << ": ";
-                if (totalActs[i] <= maxScores[i])
-                cin >> totalActs[i];
-                score[i] += totalActs[i];
+                cin >> score;
+                if (score > maxScores[i]) {
+                    cout << "Invalid score. Please enter a score that is less than or equal to " << maxScores[i] << endl;
+                    j = j == 0 ? 0 : j-1; // Sets the loop to the previous iteration
+                }
             }
+        actTotals[i] += score;
     }
 
-
-
+    // Initialize the grading system for each subject
+    int gradingSystem[totalNumberOfSubs][4];
+    for (int i = 0; i < totalNumberOfSubs; i++) {
+        cout << "Enter the grading system for " << subjects[i] << " (4 values): ";
+        for (int j = 0; j < 4; j++) {
+            cin >> gradingSystem[i][j];
+        }
+    }
 
     return 0;
 

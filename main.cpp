@@ -52,6 +52,7 @@ int main() {
     }
 
     int activities[totalNumberOfSubs]; // An array of amount of activities for each subject
+    int maxScores[totalNumberOfSubs]; // Maximum score for each activity
     int totalActs[totalNumberOfSubs]; // Total score of activities for each subject
 
 
@@ -59,6 +60,8 @@ int main() {
     for (int i = 0; i< totalNumberOfSubs; i++) {
         cout << "Enter the number of activities for " << subjects[i] << ": ";
         cin >> activities[i];
+        cout << "What's the max score for the activity number " << i+1 << " for " << subjects[i] << "?: ";
+        cin >> maxScores[i];
         cout << "Enter your score in midterms for " << subjects[i] << ": ";
         cin >> scoreMidterms[i];
         cout << "Enter your score in finals for " << subjects[i] << ": ";
@@ -69,13 +72,17 @@ int main() {
     int score[totalNumberOfSubs];
     for (int i = 0; i < totalNumberOfSubs; i++) {
         int amountOfActivities = activities[i];
+        score[i] = 0;
             for (int j = 0; j < amountOfActivities; j++) {
                 totalActs[i] = 0;
                 cout << "Enter your score in your activities for " << subjects[i] << ": ";
+                if (totalActs[i] <= maxScores[i])
                 cin >> totalActs[i];
                 score[i] += totalActs[i];
             }
     }
+
+
 
 
     return 0;

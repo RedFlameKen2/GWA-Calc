@@ -12,34 +12,8 @@ using namespace std;
     void setGradeToUnits(float grade[], float gToUnits[], int size);
     float calculateGWA(float gradeUnits[], float units[], int size);
 
-    class Subjects {
-    private:
-        string name;
-        int activities, midterms, finals , *arrActs, *gradingSystem;
-        float results;
-    public:
-        Subjects(string name, int acts, int midterms, int finals, int *gradingSystem) {
-            this->name = name;
-            this->activities = acts;
-            this->midterms = midterms;
-            this->finals = finals;
-            this->gradingSystem = gradingSystem;
-        }
-        // Gets the result of the activities
-        void computeActivities (int numberOfActs) {
-            float total = 0;
-            for (int i = 0; i < numberOfActs; i++) {
-                cout << "Enter score for activity " << i + 1 << ": ";
-                cin >> arrActs[i];
-                total += arrActs[i];
-                cout << "Total: " << total << "\n";
-            }
-            results = total / numberOfActs;
-        }
-    };
-
-int main() {
-    int totalNumberOfSubs; // Amount of Subjects
+    int main() {
+    int totalNumberOfSubs; // Amount of Subject
 
     cout << "Enter number of subjects: "; cin >> totalNumberOfSubs;
     cin.ignore();
@@ -186,3 +160,30 @@ float calculateGWA(float gradeUnits[], float units[], int size) {
     }
     return totalGrade / totalUnits;
 }
+class Subject {
+    private:
+        string name;
+        int activities, midterms, finals , *arrActs, *gradingSystem;
+        float results;
+    public:
+        Subject(string name, int acts, int midterms, int finals, int *gradingSystem) {
+        this->name = name;
+        this->activities = acts;
+        this->midterms = midterms;
+        this->finals = finals;
+        this->gradingSystem = gradingSystem;
+    }
+    // Gets the result of the activities
+    void computeActivities (int numberOfActs) {
+        float total = 0;
+        for (int i = 0; i < numberOfActs; i++) {
+            cout << "Enter score for activity " << i + 1 << ": ";
+            cin >> arrActs[i];
+            total += arrActs[i];
+            cout << "Total: " << total << "\n";
+        }
+        results = total / numberOfActs;
+    }
+};
+
+

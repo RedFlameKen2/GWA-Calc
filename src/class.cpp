@@ -12,16 +12,13 @@ Subject::Subject(){
 }
 
 // Getters
+
 string Subject::getSubject(){
     return this->name;
 }
 
 int Subject::getActivities(){
-    int sum = 0;
-    for (int x : this->activities) {
-        sum += x;
-    }
-    return sum;
+    return this->activities;
 }
 
 int Subject::getMidterms(){
@@ -32,20 +29,73 @@ int Subject::getFinals(){
     return this->finals;
 }
 
+// Getters for total
+int Subject::getTotalActivity(){
+    return this->totalActivity;
+}
+
+int Subject::getTotalMidterms(){
+    return this->totalMidterms;
+}
+
+int Subject::getTotalFinals(){
+    return this->totalFinals;
+}   
 
 // Setters
 void Subject::setSubject(){
-    cout << "Enter Subject: ";
+    cout << "\nEnter Subject Name: ";
     cin >> this->name;
 }
 
 void Subject::setActivities(){
     int score;
-    cout << "Enter Score: "; cin >> score;
-    this->activities.push_back(score);
+    cout << "\nEnter the sum of all of your Activities: "; cin >> score;
+    this->activities = score;
 }
+
+void Subject::setMidterms(){
+    cout << "\nEnter Midterms Score: ";
+    cin >> this->midterms;
+}
+
+void Subject::setFinals(){
+    cout << "\nEnter Finals Score: ";
+    cin >> this->finals;
+}
+
+void Subject::setGradingSystem(){
+    double grade;
+    cout << "\nHow many categories are there in the grading system?: "; 
+    int categories; cin >> categories;
+    for (int i = 0; i < categories; i++)
+    {
+        cout <<"\nEnter weighting " << i+1 << ": "; cin >> grade;
+        this->gradingSystem.push_back(grade);
+    }
+    
+}
+
+// Setters for Total
+
+void Subject::setTotalActivity(){
+    cout << "\nEnter Total Activity: ";
+    cin >> this->totalActivity;
+}
+
+void Subject::setTotalMidterms(){
+    cout << "\nEnter Max Score for Midterms: ";
+    cin >> this->totalMidterms;
+}
+
+void Subject::setTotalFinals(){
+    cout << "\nEnter Max Score for Finals: ";
+    cin >> this->totalFinals;
+}
+
+
 // Other Functions
-void Subject::gradeToRemarks(float grade) {
+void Subject::gradeToRemarks (double grade) {
     if(grade >= 97.5 && grade <= 100)
         cout << "Excellent";
     if(grade >= 94.5 && grade <= 97.4)

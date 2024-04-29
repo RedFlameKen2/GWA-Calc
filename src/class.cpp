@@ -175,6 +175,8 @@ void Subject::calculateFinalGrade() {
         cout << "Midterm Score: " << this->midterms << "/" << this->totalMidterms << endl;
         cout << "Average Midterms: " << aveMidterms << endl;
 
+	setGradingSystem();
+
         double result = ((aveAct * (this->getGradingSystem(0) / 100.0)) + 
                          (aveMidterms * (this->getGradingSystem(1) / 100.0)) + 
                          (aveFinals * (this->getGradingSystem(2) / 100.0)));

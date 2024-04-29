@@ -17,15 +17,15 @@ class Subject {
     public:
     Subject(){
 	initVars();
-    calculateFinalGrade();
+	calculateFinalGrade();
     }; 
 
     void initVars() {
 	this -> name = inputString("Enter Subject name: ");
-    this -> units = inputDouble("Enter Units: ");
-    this -> totalActivity = inputInt("Enter the Maximum Score for Activities: ");
-    this -> totalMidterms = inputInt("Enter the Maximum Score for Midterms: ");
-    this -> totalFinals = inputInt("Enter the Maximum Score for Finals: ");
+	this -> units = inputDouble("Enter Units: ");
+	this -> totalActivity = inputInt("Enter the Maximum Score for Activities: ");
+	this -> totalMidterms = inputInt("Enter the Maximum Score for Midterms: ");
+	this -> totalFinals = inputInt("Enter the Maximum Score for Finals: ");
 	this -> activities = inputInt("Enter the total score of all of your Activities: ");
 	this -> midterms = inputInt("Enter Midterms: ");
 	this -> finals = inputInt("Enter Finals: ");

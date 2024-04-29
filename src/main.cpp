@@ -27,11 +27,11 @@ void menu(){
 	int option = getOption();
 	switch(option){
 	    case 1:
-        system("cls");
+        system("cls && clear");
 		progLogic(subs);
 		break;
 	    case 2:
-        system("cls");
+        system("cls && clear");
         initTable(subs);
 		break;
 	    case 3:

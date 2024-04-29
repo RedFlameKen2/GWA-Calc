@@ -8,24 +8,6 @@ using namespace std;
 
 void progLogic(vector<Subject> &subjects){
     subjects.push_back(Subject()); // Creates a new subject
-    // sets the subjects' attributes
-    for (Subject &x : subjects) {
-         if(x.getSubject() == ""){ // Checks if it's empty
-            x.setSubject();
-            x.setUnits();
-            x.setTotalActivity();
-            x.setTotalMidterms();
-            x.setTotalFinals();
-            x.setActivities();
-            x.setMidterms();
-            x.setFinals();
-            x.setGradingSystem();
-            x.calculateFinalGrade();
-            x.setGradeToUnits();
-            x.gradeToRemarks(x.getFinalGrade());
-            cout << "Subject added!\n\n\n"; 
-        } 
-    }
 };
 
 // This function Prints a Table and Display the Grades, Remarks, etc.

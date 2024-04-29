@@ -29,6 +29,8 @@ void menu(){
 	    case 1:
         system("cls && clear");
 		progLogic(subs);
+        cout << "Subject Added!" << endl;
+         getchar();
 		break;
 	    case 2:
         system("cls && clear");

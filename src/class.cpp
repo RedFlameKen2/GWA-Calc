@@ -47,38 +47,12 @@ double Subject::getFinalGrade(){
     return this->finalGrade;
 }
 
-double Subject::getFinalGWA(){
-    return this->finalGWA;
+double Subject::getFinalGradeUnit(){
+    return this->finalGradeUnit;
 }
 
 string Subject::getRemarks(){
     return this->remarks;
-}
-
-// Setters
-void Subject::setSubject(){
-    cout << "\nEnter Subject Name: ";
-    cin >> this->name;
-}
-
-void Subject::setActivities(){
-    cout << "\nEnter the sum of all of your Activities: ";
-    cin >> this->activities;
-}
-
-void Subject::setMidterms(){
-    cout << "\nEnter Midterms Score: ";
-    cin >> this->midterms;
-}
-
-void Subject::setFinals(){
-    cout << "\nEnter Finals Score: ";
-    cin >> this->finals;
-}
-
-void Subject::setUnits() {
-    cout << "\nEnter Units: ";
-    cin >> this->units;
 }
 
 
@@ -166,25 +140,25 @@ string Subject::gradeToRemarks (float grade) {
 // This Function Converts the Final Grade of a Subject to Units
  void Subject::setGradeToUnits() {{
         if(this->finalGrade >= 97.5 && this->finalGrade <= 100)
-            this->finalGWA = 1.00;
+            this->finalGradeUnit = 1.00;
         if(this->finalGrade >= 94.5 && this->finalGrade <= 97.4)
-            this->finalGWA = 1.25;
+            this->finalGradeUnit = 1.25;
         if(this->finalGrade >= 91.5 && this->finalGrade <= 94.4)
-            this->finalGWA = 1.50;
+            this->finalGradeUnit = 1.50;
         if(this->finalGrade >= 88.5 && this->finalGrade <= 91.4)
-            this->finalGWA = 1.75;
+            this->finalGradeUnit = 1.75;
         if(this->finalGrade >= 85.5 && this->finalGrade <= 88.4)
-            this->finalGWA = 2.00;
+            this->finalGradeUnit = 2.00;
         if(this->finalGrade >= 82.5 && this->finalGrade <= 85.4)
-            this->finalGWA = 2.25;
+            this->finalGradeUnit = 2.25;
         if(this->finalGrade >= 79.5 && this->finalGrade <= 82.4)
-            this->finalGWA = 2.50;
+            this->finalGradeUnit = 2.50;
         if(this->finalGrade >= 76.5 && this->finalGrade <= 79.4)
-            this->finalGWA = 2.75;
+            this->finalGradeUnit = 2.75;
         if(this->finalGrade >= 74.5 && this->finalGrade <= 76.4)
-            this->finalGWA = 3.00;
+            this->finalGradeUnit = 3.00;
         if(this->finalGrade < 74.5)
-            this->finalGWA = 5.00;
+            this->finalGradeUnit = 5.00;
     }
 }
 
@@ -200,6 +174,7 @@ void Subject::calculateFinalGrade() {
         double aveMidterms = (this->midterms * 100) / totalMidterms;
         cout << "Midterm Score: " << this->midterms << "/" << this->totalMidterms << endl;
         cout << "Average Midterms: " << aveMidterms << endl;
+
         double result = ((aveAct * (this->getGradingSystem(0) / 100.0)) + 
                          (aveMidterms * (this->getGradingSystem(1) / 100.0)) + 
                          (aveFinals * (this->getGradingSystem(2) / 100.0)));

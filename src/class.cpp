@@ -3,15 +3,6 @@
 
 using namespace std;
 
-// Default Constructor to blanks
-Subject::Subject(){
-    this->name = "";
-    this->activities = 0;
-    this->midterms = 0;
-    this->finals = 0;
-    this->units = 0.0;
-}
-
 // Getters
 
 string Subject::getSubject(){

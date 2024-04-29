@@ -15,7 +15,35 @@ class Subject {
         // finalGrade is the calculation of activities, midterms and finals. Final GWA is the finalGrade converted to units
 
     public:
-    Subject();  
+    Subject(){
+	initVars();
+    };  
+    void initVars(){
+	this -> name = inputString("Enter Subject name: ");
+	this -> activities = inputInt("Enter the sum of all of your Activities: ");
+	this -> midterms = inputInt("Enter Midterms: ");
+	this -> finals = inputInt("Enter Finals: ");
+	this -> units = inputDouble("Enter Units: ");
+    }
+
+    string inputString(string prompt){
+	string out;
+	cout << prompt;
+	cin >> out;
+	return out;
+    }
+    int inputInt(string prompt){
+	int out;
+	cout << prompt;
+	cin >> out;
+	return out;
+    }
+    double inputDouble(string prompt){
+	double out;
+	cout << prompt;
+	cin >> out;
+	return out;
+    }
     // Getters
     string getSubject();
     int getActivities();
@@ -31,12 +59,7 @@ class Subject {
     string getRemarks();
     int getGradingSystem(int index);
     // Setters
-    void setSubject();
-    void setActivities();
-    void setMidterms();
-    void setFinals();
     void setGradingSystem();
-    void setUnits();
 
     // Setters for Total
     void setTotalActivity();

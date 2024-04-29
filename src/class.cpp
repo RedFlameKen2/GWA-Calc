@@ -5,11 +5,10 @@ using namespace std;
 
 Subject::Subject(){
     this->name = "";
-    this->activities;
+    this->activities = 0;
     this->midterms = 0;
     this->finals = 0;
-    this->units = 0.0f;
-    this->gradingSystem;
+    this->units = 0.0;
 }
 
 // Getters
@@ -33,6 +32,11 @@ int Subject::getFinals(){
 double Subject::getUnits(){
     return this->units;
 }
+
+int Subject::getGradingSystem(int index) {
+    return this->gradingSystem[index];
+}
+
 
 // Getters for total
 int Subject::getTotalActivity(){
@@ -66,9 +70,8 @@ void Subject::setSubject(){
 }
 
 void Subject::setActivities(){
-    int score;
-    cout << "\nEnter the sum of all of your Activities: "; cin >> score;
-    this->activities = score;
+    cout << "\nEnter the sum of all of your Activities: ";
+    cin >> this->activities;
 }
 
 void Subject::setMidterms(){
@@ -87,16 +90,33 @@ void Subject::setUnits() {
 }
 
 
+
+
 void Subject::setGradingSystem(){
     double grade;
-    cout << "\nHow many components are there in the grading system?(e.g 30% Activities, 30% Midterms, 40% Finals = '3'): "; 
-    int categories; cin >> categories;
-    for (int i = 0; i < categories; i++)
-    {
-        cout <<"\nEnter component " << i+1 << ": "; cin >> grade;
+    for (int i = 0; i < 3; i++)
+    {   
+        if (i == 0) 
+        {
+        cout <<"\nSet the % for Activities " << i+1 << ": "; 
+        cin >> grade;
         this->gradingSystem.push_back(grade);
-    }
+        }
+        if (i == 1) 
+        {
+            cout << "Set the % for Midterms " << i+1 << ": ";
+            cin >> grade;
+            this->gradingSystem.push_back(grade);
+        }
+
+        if (i == 2)
+        {
+            cout << "Set the % for Finals " << i+1 << ": ";
+            cin >> grade;
+            this->gradingSystem.push_back(grade);
+        }
     
+    }
 }
 
 // Setters for Total
@@ -143,30 +163,45 @@ string Subject::gradeToRemarks (float grade) {
     return "Invalid Grade";
 }
 
- void Subject::setGradeToUnits(vector<Subject> &subjects) {
-    for (Subject &sub : subjects) {
-        float finalGrade = sub.getFinalGrade();
-        sub.finalGWA = 0.0f;
-
-        if(finalGrade >= 97.5 && finalGrade <= 100)
-            sub.finalGWA = 1.00f;
-        if(finalGrade >= 94.5 && finalGrade <= 97.4)
-            sub.finalGWA = 1.25f;
-        if(finalGrade >= 91.5 && finalGrade <= 94.4)
-            sub.finalGWA = 1.50f;
-        if(finalGrade >= 88.5 && finalGrade <= 91.4)
-            sub.finalGWA = 1.75f;
-        if(finalGrade >= 85.5 && finalGrade <= 88.4)
-            sub.finalGWA = 2.00f;
-        if(finalGrade >= 82.5 && finalGrade <= 85.4)
-            sub.finalGWA = 2.25f;
-        if(finalGrade >= 79.5 && finalGrade <= 82.4)
-            sub.finalGWA = 2.50f;
-        if(finalGrade >= 76.5 && finalGrade <= 79.4)
-            sub.finalGWA = 2.75f;
-        if(finalGrade >= 74.5 && finalGrade <= 76.4)
-            sub.finalGWA = 3.00f;
-        if(finalGrade < 74.5)
-            sub.finalGWA = 5.00f;
+ void Subject::setGradeToUnits() {{
+        if(this->finalGrade >= 97.5 && this->finalGrade <= 100)
+            this->finalGWA = 1.00;
+        if(this->finalGrade >= 94.5 && this->finalGrade <= 97.4)
+            this->finalGWA = 1.25;
+        if(this->finalGrade >= 91.5 && this->finalGrade <= 94.4)
+            this->finalGWA = 1.50;
+        if(this->finalGrade >= 88.5 && this->finalGrade <= 91.4)
+            this->finalGWA = 1.75;
+        if(this->finalGrade >= 85.5 && this->finalGrade <= 88.4)
+            this->finalGWA = 2.00;
+        if(this->finalGrade >= 82.5 && this->finalGrade <= 85.4)
+            this->finalGWA = 2.25;
+        if(this->finalGrade >= 79.5 && this->finalGrade <= 82.4)
+            this->finalGWA = 2.50;
+        if(this->finalGrade >= 76.5 && this->finalGrade <= 79.4)
+            this->finalGWA = 2.75;
+        if(this->finalGrade >= 74.5 && this->finalGrade <= 76.4)
+            this->finalGWA = 3.00;
+        if(this->finalGrade < 74.5)
+            this->finalGWA = 5.00;
     }
 }
+
+void Subject::calculateFinalGrade() {
+        double aveAct = (this->activities * 100) / totalActivity;
+        cout << "Activities: " << this->activities << "/" << totalActivity << endl;
+        cout << "Average Act: " << aveAct << endl;
+        double aveFinals = (this->finals * 100) / totalFinals;
+        cout << "Finals: " << this->finals << "/" << this->totalFinals << endl;
+        cout << "Average Finals: " << aveFinals << endl;
+        double aveMidterms = (this->midterms * 100) / totalMidterms;
+        cout << "Midterm Score: " << this->midterms << "/" << this->totalMidterms << endl;
+        cout << "Average Midterms: " << aveMidterms << endl;
+        double result = ((aveAct * (this->getGradingSystem(0) / 100.0)) + 
+                         (aveMidterms * (this->getGradingSystem(1) / 100.0)) + 
+                         (aveFinals * (this->getGradingSystem(2) / 100.0)));
+        cout << "Final Grade: " << result << "\n\n\n";
+        this->finalGrade = result;
+}
+
+

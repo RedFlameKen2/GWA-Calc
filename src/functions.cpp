@@ -19,8 +19,12 @@ void progLogic(vector<Subject> &subjects){
             x.setActivities();
             x.setMidterms();
             x.setFinals();
-            x.setGradingSystem(); 
-        }
+            x.setGradingSystem();
+            x.calculateFinalGrade();
+            x.setGradeToUnits();
+            x.gradeToRemarks(x.getFinalGrade());
+            cout << "Subject added!\n\n\n"; 
+        } 
     }
 };
 
@@ -40,6 +44,7 @@ int getOption(){
     cout << "3. Calculate GWA\n";
     cout << "4. Help\n";
     cout << "5. Exit\n";
+    cout << "Enter: "; 
     cin >> option;
     return option;
 };
@@ -47,3 +52,5 @@ int getOption(){
 void printHelp(){
     cout << "help help help help me help help ahhhhhhh" << endl;
 };
+
+

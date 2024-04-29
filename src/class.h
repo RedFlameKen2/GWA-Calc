@@ -11,7 +11,7 @@ class Subject {
         string name, remarks;
         int midterms, finals, activities, totalActivity, totalMidterms, totalFinals;
         vector<double> gradingSystem;
-        double finalGrade = 0.0, finalGWA = 0.0f, units = 0.0f; 
+        double finalGrade = 0.0, finalGWA = 0.0, units = 0.0; 
         // Final Grade is Average of all grade. Final GWA is the grade converted to units
 
     public:
@@ -29,6 +29,7 @@ class Subject {
     double getFinalGrade();
     double getFinalGWA();
     string getRemarks();
+    int getGradingSystem(int index);
     // Setters
     void setSubject();
     void setActivities();
@@ -44,7 +45,7 @@ class Subject {
 
     // Other Functions
     string gradeToRemarks(float grade);
-    void setGradeToUnits(vector<Subject> &subjects);
-    
+    void setGradeToUnits();
+    void calculateFinalGrade();
 };
 #endif

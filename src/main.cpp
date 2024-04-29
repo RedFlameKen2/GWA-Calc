@@ -27,13 +27,12 @@ void menu(){
 	int option = getOption();
 	switch(option){
 	    case 1:
+        system("cls");
 		progLogic(subs);
 		break;
 	    case 2:
-        system("clear");
+        system("cls");
         initTable(subs);
-        cout << "\n\nPress any key to continue..." << endl;
-        getchar();
 		break;
 	    case 3:
 		break;

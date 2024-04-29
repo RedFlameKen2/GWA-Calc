@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Default Constructor to blanks
 Subject::Subject(){
     this->name = "";
     this->activities = 0;
@@ -94,6 +95,12 @@ void Subject::setUnits() {
 
 void Subject::setGradingSystem(){
     double grade;
+    /* This function might get change soon.
+        Might Make it more dynamic and not
+        just limited to 3.
+
+        This function adds the % of the Grading System
+    */
     for (int i = 0; i < 3; i++)
     {   
         if (i == 0) 
@@ -138,6 +145,8 @@ void Subject::setTotalFinals(){
 
 
 // Other Functions
+
+// This Function converts the grade to remarks
 string Subject::gradeToRemarks (float grade) {
     if(grade >= 97.5f && grade <= 100)
         return "Excellent";
@@ -163,6 +172,7 @@ string Subject::gradeToRemarks (float grade) {
     return "Invalid Grade";
 }
 
+// This Function Converts the Final Grade of a Subject to Units
  void Subject::setGradeToUnits() {{
         if(this->finalGrade >= 97.5 && this->finalGrade <= 100)
             this->finalGWA = 1.00;
@@ -187,7 +197,9 @@ string Subject::gradeToRemarks (float grade) {
     }
 }
 
+// This Funciton Calculates the Final Grade of a Subject
 void Subject::calculateFinalGrade() {
+        // I had to multiply it by 100 before dividing. or Else it will just set it to 0
         double aveAct = (this->activities * 100) / totalActivity;
         cout << "Activities: " << this->activities << "/" << totalActivity << endl;
         cout << "Average Act: " << aveAct << endl;

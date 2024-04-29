@@ -12,7 +12,7 @@ class Subject {
         int midterms, finals, activities, totalActivity, totalMidterms, totalFinals;
         vector<double> gradingSystem;
         double finalGrade = 0.0, finalGWA = 0.0, units = 0.0; 
-        // Final Grade is Average of all grade. Final GWA is the grade converted to units
+        // Final Grade is Average of this->grade. Final GWA is the Final Grade converted to units
 
     public:
     Subject();  

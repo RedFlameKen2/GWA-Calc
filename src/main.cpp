@@ -19,6 +19,7 @@ int main() {
 };
 
 void menu(){
+    vector<Subject> subs;
 
     cout << "Welcome to the GWA Calculator!\n\n";
 
@@ -26,10 +27,13 @@ void menu(){
 	int option = getOption();
 	switch(option){
 	    case 1:
-		progLogic();
+		progLogic(subs);
 		break;
 	    case 2:
-        
+        system("clear");
+        initTable(subs);
+        cout << "\n\nPress any key to continue..." << endl;
+        getchar();
 		break;
 	    case 3:
 		break;

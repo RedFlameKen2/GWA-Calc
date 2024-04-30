@@ -6,8 +6,6 @@
 #include <vector>
 #include "functions.h"
 #include "class.h"
-#include "functions.cpp"
-#include "class.cpp"
 #include <conio.h>
 
 

@@ -2,10 +2,11 @@
 #define FUNCTIONS_H
 
 #include <vector>
+#include "functions.cpp"
 
-void progLogic();
+void progLogic(vector<Subject> &subjects);
 void printHelp();
-void initTable ();
+void initTable (vector<Subject> &subjects);
 int getOption();
 
 

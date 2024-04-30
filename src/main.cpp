@@ -39,11 +39,41 @@ void menu(){
         getch();
         system("cls");
 		break;
-	    case 3:
-		break;
-        case 4:
+        case 3:
+        system("cls");
+        if (subs.size() == 0){
+            cout << "No Subjects Added Yet!\n\nPress any key to continue..." << endl;
+            getch();
+            system("cls");
+            break;
+        }
+        calculateGWA(subs);
+        cout << "GWA Calculated!\n\nPress any key to continue..." << endl;
+        getch();
+        system("cls");
         break;
+	    case 4:
+        system("cls");
+        if (subs.size() == 0){
+            cout << "No Subjects Added Yet!\n\nPress any key to continue..." << endl;
+            getch();
+            system("cls");
+            break;
+        }
+        initTable(subs);
+        deleteSubject(subs);
+        cout << "Deleted!\n\nPress any key to continue..." << endl;
+        getch();
+        system("cls");
+		break;
         case 5:
+        system("cls");
+        printHelp();
+        cout << "\n\nPress Any Key to Continue...\n\n";
+        getch();
+        system("cls");
+        break;
+        case 6:
         cout << "Exiting program..." << endl;
         return;
 	    default:

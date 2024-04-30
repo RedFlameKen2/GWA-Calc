@@ -14,7 +14,7 @@ class Subject {
         int midterms, finals, activities, totalActivity, totalMidterms, totalFinals;
         vector<double> gradingSystem;
         double finalGrade = 0.0, finalGradeUnit = 0.0, units = 0.0; 
-        // finalGrade is the calculation of activities, midterms and finals. Final GWA is the finalGrade converted to units
+        // finalGrade is the calculation of activities, midterms and finals. FinalGradeUnit is the finalGrade converted to units
 
     public:
     Subject(){

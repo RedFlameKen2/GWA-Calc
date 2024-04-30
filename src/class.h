@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <iostream>
+#include <string>
+#include <limits>
 
 using namespace std;
 
@@ -42,7 +44,8 @@ class Subject {
     string inputString(string prompt){
 	string out;
 	cout << prompt;
-	cin >> out;
+    cin.ignore();
+    getline(cin, out);
 	return out;
     }
 

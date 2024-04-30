@@ -3,6 +3,7 @@
 #include <iostream>
 #include "functions.h"
 #include "class.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -12,13 +13,17 @@ void progLogic(vector<Subject> &subjects){
 
 // This function Prints a Table and Display the Grades, Remarks, etc.
 void initTable (vector<Subject> &subjects) {
-    cout << "Subject\t\tUnits\t\tFinal Grade\t\tRemarks" << endl;
+    cout << left << setw(25) << "Subject"
+         << setw(25) << "Units"
+         << setw(25) << "Final Grade"
+         << setw(25) << "Remarks" << endl;
     for (int i = 0; i < subjects.size(); i++) {
         double finalGrade = subjects[i].getFinalGrade();
-        cout << subjects[i].getSubject() << "\t\t" <<  subjects[i].getUnits() << "\t\t"
-        << subjects[i].getFinalGradeUnit() << "\t\t" << subjects[i].gradeToRemarks(finalGrade) << endl;
+        cout << left << setw(25) << subjects[i].getSubject()
+             << setw(25) << subjects[i].getUnits()
+             << setw(25) << subjects[i].getFinalGradeUnit()
+             << setw(25) << subjects[i].gradeToRemarks(finalGrade) << endl;
     }
-
 }
 
 int getOption(){

@@ -21,14 +21,19 @@ class Subject {
     }; 
 
     void initVars() {
+    string subName;
 	this -> name = inputString("Enter Subject name: ");
 	this -> units = inputDouble("Enter Units: ");
 	this -> totalActivity = inputInt("Enter the Maximum Score for Activities: ");
 	this -> totalMidterms = inputInt("Enter the Maximum Score for Midterms: ");
 	this -> totalFinals = inputInt("Enter the Maximum Score for Finals: ");
-	this -> activities = inputInt("Enter the total score of all of your Activities: ");
-	this -> midterms = inputInt("Enter Midterms: ");
-	this -> finals = inputInt("Enter Finals: ");
+    bool isBigger;
+    this -> activities = inputInt("Enter the total score of all of your Activities: ");
+    loopCheck(isBigger = true, this->activities, this->totalActivity, subName = "Activitites");
+    this -> midterms = inputInt("Enter the total score of your Midterms: ");
+    loopCheck(isBigger = true, this->midterms, this->totalMidterms, subName = "Midterms");
+    this -> finals = inputInt("Enter the total score of your Finals: ");
+    loopCheck(isBigger = true, this->finals, this->totalFinals, subName = "Finals");
     }
 
 
@@ -54,6 +59,27 @@ class Subject {
 	cin >> out;
 	return out;
     }
+
+    // Guard Checks
+
+    bool isValid(int x, int xTotal) {
+        if (x < 0)
+        return false;
+
+        if (x > xTotal)
+         return false;
+        else 
+        return true;
+    }
+
+    void loopCheck (bool &check, int &x, int &xTotal, string &subName) {
+        while (!isValid(x, xTotal)) {
+            cout << "Invalid score for " << subName << ".\nTry Again.\n";
+            cout << "Enter the total score of your " << subName << ": "; 
+            cin >> x;
+        }
+    }
+
     // Getters
     string getSubject();
     int getActivities();

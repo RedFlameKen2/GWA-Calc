@@ -11,11 +11,12 @@ void progLogic(vector<Subject> &subjects){
 };
 
 // This function Prints a Table and Display the Grades, Remarks, etc.
-void initTable (vector<Subject> subjects) {
+void initTable (vector<Subject> &subjects) {
     cout << "Subject\t\tUnits\t\tFinal Grade\t\tRemarks" << endl;
     for (int i = 0; i < subjects.size(); i++) {
         double finalGrade = subjects[i].getFinalGrade();
-        cout << subjects[i].getSubject() << "\t\t" <<  subjects[i].getUnits() << "\t\t" << subjects[i].getFinalGradeUnit() << "\t\t" << subjects[i].gradeToRemarks(finalGrade) << endl;
+        cout << subjects[i].getSubject() << "\t\t" <<  subjects[i].getUnits() << "\t\t"
+        << subjects[i].getFinalGradeUnit() << "\t\t" << subjects[i].gradeToRemarks(finalGrade) << endl;
     }
 
 }

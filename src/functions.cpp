@@ -8,10 +8,19 @@
 using namespace std;
 
 double finalGWA = 0.0;
+double aveFinalGrade = 0.0;
 
 void progLogic(vector<Subject> &subjects){
     subjects.push_back(Subject()); // Creates a new subject
 };
+
+void calculateAveGrade(vector<Subject> &subjects){
+    double totalGrade = 0.0;
+    for (int i = 0; i < subjects.size(); i++){
+        totalGrade += subjects[i].getFinalGrade();
+    }
+    aveFinalGrade = totalGrade / subjects.size();
+}
 
 void calculateGWA(vector<Subject> &subjects){
     double totalUnits = 0.0;
@@ -36,10 +45,10 @@ void initTable (vector<Subject> &subjects) {
              << setw(25) << subjects[i].getFinalGradeUnit()
              << setw(25) << subjects[i].gradeToRemarks(finalGrade) << endl;
     }
-    if (subjects.size() > 0 && finalGWA != 0.0)
-    cout << left << setw(75) << "GWA: " << finalGWA << endl;
+    if (subjects.size() > 0 && finalGWA != 0.0 && aveFinalGrade != 0.0)
+    cout << "GWA | Average Grade: " << finalGWA << " | " << aveFinalGrade<< endl;
     else 
-    cout << left << setw(75) << "GWA Not Yet Calculated!" << endl;
+    cout << "Grade Not Yet Calculated!" << endl;
 }
 
 void deleteSubject(vector<Subject> &subjects){

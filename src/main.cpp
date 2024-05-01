@@ -48,6 +48,7 @@ void menu(){
             break;
         }
         calculateGWA(subs);
+        calculateAveGrade(subs);
         cout << "GWA Calculated!\n\nPress any key to continue..." << endl;
         getch();
         system("cls");

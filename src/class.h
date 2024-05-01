@@ -5,16 +5,19 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <conio.h>
 
 using namespace std;
 
 class Subject {
     private:
         string name, remarks;
-        int midterms, finals, activities, totalActivity, totalMidterms, totalFinals;
         vector<double> gradingSystem;
+        vector<int> totalAssessments; // Total Scores of each assessments
+        vector<int> assessments; // Scores of each assessments
+        vector<string> gradingSystemName;
         double finalGrade = 0.0, finalGradeUnit = 0.0, units = 0.0; 
-        // finalGrade is the calculation of activities, midterms and finals. FinalGradeUnit is the finalGrade converted to units
+        // finalGrade is the calculation of all Assessments. FinalGradeUnit is the finalGrade converted to units
 
     public:
     Subject(){
@@ -26,15 +29,7 @@ class Subject {
     string subName;
 	this -> name = inputString("Enter Subject name: ");
 	this -> units = inputDouble("Enter Units: ");
-	this -> totalActivity = inputInt("Enter the Maximum Score for Activities: ");
-	this -> totalMidterms = inputInt("Enter the Maximum Score for Midterms: ");
-	this -> totalFinals = inputInt("Enter the Maximum Score for Finals: ");
-    this -> activities = inputInt("Enter the total score of all of your Activities: ");
-    loopCheck(this->activities, this->totalActivity, subName = "Activitites");
-    this -> midterms = inputInt("Enter the total score of your Midterms: ");
-    loopCheck(this->midterms, this->totalMidterms, subName = "Midterms");
-    this -> finals = inputInt("Enter the total score of your Finals: ");
-    loopCheck(this->finals, this->totalFinals, subName = "Finals");
+    setGradingSystem();
     }
 
 
@@ -87,33 +82,10 @@ class Subject {
     return this->name;
 }
 
-    int getActivities(){
-        return this->activities;
-    }
-
-    int getMidterms(){
-        return this->midterms;
-    }
-
-    int getFinals(){
-        return this->finals;
-    }
 
     double getUnits(){
         return this->units;
     }
-    // Getters for total
-    int getTotalActivity(){
-        return this->totalActivity;
-    }
-
-    int getTotalMidterms(){
-        return this->totalMidterms;
-    }
-
-    int getTotalFinals(){
-        return this->totalFinals;
-    }   
 
     double getFinalGrade(){
         return this->finalGrade;
@@ -129,59 +101,77 @@ class Subject {
 
     int getGradingSystem(int index) {
     return this->gradingSystem[index];
-}
-
-    // Setters
-    void setGradingSystem(){
-    double grade;
-    /* This function might get change soon.
-        Might Make it more dynamic and not
-        just limited to 3.
-
-        This function adds the % of the Grading System
-    */
-    for (int i = 0; i < 3; i++)
-    {   
-        if (i == 0) 
-        {
-        cout <<"\nSet the % for Activities " << i+1 << ": "; 
-        cin >> grade;
-        this->gradingSystem.push_back(grade);
-        }
-        if (i == 1) 
-        {
-            cout << "Set the % for Midterms " << i+1 << ": ";
-            cin >> grade;
-            this->gradingSystem.push_back(grade);
-        }
-
-        if (i == 2)
-        {
-            cout << "Set the % for Finals " << i+1 << ": ";
-            cin >> grade;
-            this->gradingSystem.push_back(grade);
-        }
-    
     }
-}
 
-        // Setters for Total
+    void initGradingSystemName(int size) {
+        string name;
+        cout << "\nPlease enter the names of the different aspects or categories that make up your grading system (e.g Midterms, Finals, Prelims, Activities, etc.).\n";
+        // This loop will ask for the name of each grading system
+        for (int i = 0; i < size; i++){
+            cout << "Enter: ";
+            if (cin.peek() == '\n')
+                cin.ignore();
+            getline(cin, name);
+            this->gradingSystemName.push_back(name);
+        }
+    }
 
-        void setTotalActivity(){
-            cout << "\nEnter Total Activity: ";
-            cin >> this->totalActivity;
+    bool isValidPercentage(int percentage) {
+        if (percentage < 0 || percentage > 100)
+            return false;
+        else
+            return true;
+    }
+
+    void initPercentageGradingSystem(int size) {
+       int grade;
+        for (int i = 0; i < size; i++){
+            int sumPercentage = 0;
+            cout << "Enter the percentage of " << gradingSystemName[i] << ": ";
+            cin >> grade;
+            // Checks if the percentage is greater than 100
+            if (grade <= 100 || grade >= 0) {
+                sumPercentage += grade;
+                this->gradingSystem.push_back(grade);
+                if (!isValidPercentage(sumPercentage)) {
+                    cout << "The sum of the percentages is greater than 100. Please Try Again.\n";
+                    this->gradingSystem.clear();
+                    i = 0;
+                }
+            }
+        }
+    }
+
+    void initAssessments() {
+        int score;
+        for (int i = 0; i < this->gradingSystemName.size(); i++){
+            cout << "Enter the Maximum score of " << this->gradingSystemName[i] << ": ";
+            cin >> score;
+            this->totalAssessments.push_back(score);
         }
 
-        void setTotalMidterms(){
-            cout << "\nEnter Max Score for Midterms: ";
-            cin >> this->totalMidterms;
+        for (int i = 0; i < gradingSystemName.size(); i++){
+            cout << "Enter the score of your " << this->gradingSystemName[i] << ": ";
+            cin >> score;
+            loopCheck(score, totalAssessments[i], gradingSystemName[i]);
+            this->assessments.push_back(score); 
         }
 
-        void setTotalFinals(){
-            cout << "\nEnter Max Score for Finals: ";
-            cin >> this->totalFinals;
-        }
-
+        
+    }
+    
+    // Setters
+        void setGradingSystem() {
+        int size;
+        cout << "How many Grading System do you have?: ";
+        cin >> size;
+        // This function will ask for the name of each grading system
+        initGradingSystemName(size);
+        // This function will ask for the percentage of each grading system
+        initPercentageGradingSystem(size);
+        // This function will ask for the score of each assessments
+        initAssessments();
+    }
    
         // Other Functions
 
@@ -238,23 +228,18 @@ class Subject {
 
         // This Funciton Calculates the Final Grade of a Subject
         void calculateFinalGrade() {
-                // I had to multiply it by 100 before dividing. or Else it will just set it to 0
-                double aveAct = (this->activities * 100) / totalActivity;
-                cout << "Activities: " << this->activities << "/" << totalActivity << endl;
-                cout << "Average Act: " << aveAct << endl;
-                double aveFinals = (this->finals * 100) / totalFinals;
-                cout << "Finals: " << this->finals << "/" << this->totalFinals << endl;
-                cout << "Average Finals: " << aveFinals << endl;
-                double aveMidterms = (this->midterms * 100) / totalMidterms;
-                cout << "Midterm Score: " << this->midterms << "/" << this->totalMidterms << endl;
-                cout << "Average Midterms: " << aveMidterms << endl;
+                // I had to multiply it by 100 before dividing. or Else it will just set it to 0.0
+                vector<double> aveAssessments;
+                for (int i = 0; i < gradingSystemName.size(); i++){
+                    cout << gradingSystemName[i] << ": " << assessments[i] << "/" << totalAssessments[i] << endl;
+                    aveAssessments.push_back((assessments[i] * 100) / totalAssessments[i]);
+                }
 
-                setGradingSystem();
-
-                double result = ((aveAct * (this->getGradingSystem(0) / 100.0)) + 
-                                (aveMidterms * (this->getGradingSystem(1) / 100.0)) + 
-                                (aveFinals * (this->getGradingSystem(2) / 100.0)));
-                cout << "Final Grade: " << result << "\n\n\n";
+                double result = 0.0;
+                for (int i = 0; i < aveAssessments.size(); i++){
+                    result += (aveAssessments[i] * (gradingSystem.at(i) / 100));
+                }
+                cout << "\n\nYour Final Grade for " << name << " is: " << result << "\n\n\n";
                 this->finalGrade = result;
                 setGradeToUnits();
         }

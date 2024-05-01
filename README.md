@@ -1,46 +1,41 @@
-# GWA- Calc
+# GWA-Calc: Your Grade Management Tool
 
-## This C++ program helps you manage your academic grades effectively. Below are the four main functionalities of the Grade Calculator:
+## Overview
 
-1. **Add Subjects**:
-   - This feature allows you to input the details of each subject, including the subject's name, its units, the grading system, and the scores of various assessments (e.g., midterms, prelims, finals, class participation).
-   - The program then calculates the final grade of the subject based on the provided scores and grading system.
-   - Additionally, it converts the final grade to units (if applicable) and provides remarks based on the performance.
+GWA-Calc is a C++ program designed to help you manage your academic grades more effectively. It offers four key features:
 
-2. **Display Subjects**:
-   - With this function, you can view a table displaying all the subjects you've added, along with their respective units and remarks.
-   - It's a convenient way to get an overview of your academic progress.
+1. **Add Subjects**: Input subject details such as name, units, grading system, and assessment scores (e.g., midterms, prelims, finals, class participation). The program calculates the final grade, converts it to units if applicable, and provides performance remarks.
 
-3. **Calculate GWA (General Weighted Average)**:
-   - This feature calculates your General Weighted Average by considering the final grades of all the subjects you've added.
-   - It provides you with a comprehensive measure of your overall academic performance.
+2. **Display Subjects**: View a table of all added subjects with their units and remarks, offering a quick overview of your academic progress.
 
-4. **Delete Subject**:
-   - Need to remove a subject from your list? No problem! This function allows you to delete subjects from the table, helping you keep your records up-to-date.
+3. **Calculate GWA (General Weighted Average)**: Compute your General Weighted Average using the final grades of all subjects to evaluate your overall academic performance.
 
-**Usage Instructions:**
+4. **Delete Subject**: Remove subjects from your record, ensuring your data remains current.
 
-1. **Compile the Program:**
-   - Ensure you have a C++ compiler installed on your system.
-   - Download the GradeCalculator.cpp source code file.
-   - Compile the source code using your C++ compiler. For example:
+## How to Use
+
+### Setup
+
+1. **Compile the Program**:
+   - Ensure a C++ compiler is installed on your system.
+   - Download the `GradeCalculator.cpp` source file.
+   - Compile using:
      ```
-     g++ GradeCalculator.cpp -o GradeCalculator
+     g++ main.cpp -o main.exe
      ```
 
-2. **Run the Program:**
-   - Execute the compiled executable file. For example:
+2. **Run the Program**:
+   - Execute the compiled file:
      ```
-     ./GradeCalculator
+     ./main.exe
      ```
 
-3. **Follow On-Screen Prompts:**
-   - Once the program is running, follow the on-screen prompts to utilize the different functions of the Grade Calculator.
+3. **Follow Prompts**: Use the on-screen instructions to navigate the program's features.
 
-**Example Usage:**
+### Example
 
 ![Grade Calculator Demo](assets/0501.gif)
 
-**Note:** This program is designed to streamline the management of your academic grades. Feel free to customize and extend it to suit your specific needs!
+**Note**: This tool is designed for easy management and tracking of academic grades. Customize it as needed to better suit your requirements.
 
-**Happy grading!**
+**Enjoy managing your grades with GWA-Calc!**

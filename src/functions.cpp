@@ -55,7 +55,7 @@ void deleteSubject(vector<Subject> &subjects){
     int index;
     cout << "Enter the number of the subject you want to delete: ";
     cin >> index;
-    subjects.erase(subjects.begin() + index);
+    subjects.erase(subjects.begin() + (index - 1));
     cout << "Subject Deleted!" << endl;
 }
 

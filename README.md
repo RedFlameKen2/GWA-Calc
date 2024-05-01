@@ -1,8 +1,8 @@
-# GWA-Calc: Your Grade Management Tool
+# GWA-Calculator: Your Grade Management Tool
 
 ## Overview
 
-GWA-Calc is a C++ program designed to help you manage your academic grades more effectively. It offers four key features:
+GWA-Calculator is a C++ program designed to help you manage your academic grades more effectively. It offers four key features:
 
 1. **Add Subjects**: Input subject details such as name, units, grading system, and assessment scores (e.g., midterms, prelims, finals, class participation). The program calculates the final grade, converts it to units if applicable, and provides performance remarks.
 
@@ -18,7 +18,7 @@ GWA-Calc is a C++ program designed to help you manage your academic grades more 
 
 1. **Compile the Program**:
    - Ensure a C++ compiler is installed on your system.
-   - Download the `GradeCalculator.cpp` source file.
+   - Clone or download this repository.
    - Compile using:
      ```
      g++ main.cpp -o main.exe

@@ -6,8 +6,16 @@
 #include <vector>
 #include "functions.h"
 #include "class.h"
-#include <conio.h>
 
+void clearTerm(){
+    #ifdef _WIN64
+        system("cls");
+    #elif _WIN32
+        system("cls");
+    #elif __linux__
+        system("clear");
+    #endif 
+}
 
 using namespace std;
 
@@ -26,53 +34,53 @@ void menu(){
 	int option = getOption();
 	switch(option){
 	    case 1:
-        system("cls");
+        clearTerm();
 		progLogic(subs);
         cout << "Subject Added!\n\nPress any key to continue..." << endl;
-        getch();
-        system("cls");
+        cin.get();
+        clearTerm();
 		break;
 	    case 2:
-        system("cls");
+        clearTerm();
         initTable(subs);
         cout << "\n\nPress Any Key to Continue...\n\n";
-        getch();
-        system("cls");
+        cin.get();
+        clearTerm();
 		break;
         case 3:
-        system("cls");
+        clearTerm();
         if (subs.size() == 0){
             cout << "No Subjects Added Yet!\n\nPress any key to continue..." << endl;
-            getch();
-            system("cls");
+            cin.get();
+            clearTerm();
             break;
         }
         calculateGWA(subs);
         calculateAveGrade(subs);
         cout << "GWA Calculated!\n\nPress any key to continue..." << endl;
-        getch();
-        system("cls");
+        cin.get();
+        clearTerm();
         break;
 	    case 4:
-        system("cls");
+        clearTerm();
         if (subs.size() == 0){
             cout << "No Subjects Added Yet!\n\nPress any key to continue..." << endl;
-            getch();
-            system("cls");
+            cin.get();
+            clearTerm();
             break;
         }
         initTable(subs);
         deleteSubject(subs);
         cout << "Deleted!\n\nPress any key to continue..." << endl;
-        getch();
-        system("cls");
+        cin.get();
+        clearTerm();
 		break;
         case 5:
-        system("cls");
+        clearTerm();
         printHelp();
         cout << "\n\nPress Any Key to Continue...\n\n";
-        getch();
-        system("cls");
+        cin.get();
+        clearTerm();
         break;
         case 6:
         cout << "Exiting program..." << endl;

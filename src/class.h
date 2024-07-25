@@ -5,7 +5,6 @@
 #include <iostream>
 #include <string>
 #include <limits>
-#include <conio.h>
 
 using namespace std;
 

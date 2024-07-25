@@ -2,7 +2,7 @@
 #define FUNCTIONS_H
 
 #include <vector>
-#include "functions.cpp"
+#include "class.h"
 
 
 void deleteSubject(vector<Subject> &subjects);
